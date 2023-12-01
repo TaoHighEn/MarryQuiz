@@ -9,7 +9,7 @@ namespace MarryQuiz.Quiz
 {
     public partial class Quiz : System.Web.UI.Page
     {
-        private string[,] questionsAndAnswers = 
+        private string[,] questionsAndAnswers =
         {
             { "1. 新郎、新娘是什麼時期認識的？", "大學" },
             { "2. 新郎、新娘登記日期是幾月幾號？", "10/28" },
@@ -27,20 +27,24 @@ namespace MarryQuiz.Quiz
         }
         protected void LoadQuestions()
         {
-            for (int i = 0; i < questionsAndAnswers.Length; i++)
+            for (int i = 0; i < 5; i++)
             {
-                var pair = questionsAndAnswers[i,0];
+                var pair = questionsAndAnswers[i, 0];
                 //問題label
                 Label lblQuestion = new Label();
-                lblQuestion.Text = pair[0];
+                lblQuestion.Text = pair;
                 //回答RadioButton
                 RadioButtonList radioButtonList = new RadioButtonList();
-                radioButtonList.Items.Add("ttt");
-                radioButtonList.ID = "ans_" + pair.Key.GetHashCode(); // Generate unique ID for each answer textbox
-
-                form1.Controls.Add(lblQuestion);
+                radioButtonList.ID = "radio_ans" + i;
+                for (int r = 0; r < 4; r++)
+                {
+                    radioButtonList.Items.Add(new ListItem(answerarr[i, r]));
+                }
+                Panel panel = new Panel() { ID="div"+i,CssClass = "input-group"};
+                panel.Controls.Add(lblQuestion);
+                panel.Controls.Add(radioButtonList);
+                form1.Controls.Add(panel);
                 form1.Controls.Add(new LiteralControl("<br/>"));
-                form1.Controls.Add(radioButtonList);
                 form1.Controls.Add(new LiteralControl("<br/><br/>"));
             }
         }
@@ -49,21 +53,21 @@ namespace MarryQuiz.Quiz
         {
             foreach (var pair in questionsAndAnswers)
             {
-                string answerID = "txtAnswer_" + pair.Key.GetHashCode();
-                TextBox txtAnswer = form1.FindControl(answerID) as TextBox;
+                //string answerID = "txtAnswer_" + pair.Key.GetHashCode();
+                //TextBox txtAnswer = form1.FindControl(answerID) as TextBox;
 
-                if (txtAnswer != null && txtAnswer.Text.Trim().Equals(pair.Value, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Correct answer
-                    // Perform actions (e.g., add points, display correct answer message)
-                    Response.Write($"Question: {pair.Key}<br/>Your answer: {txtAnswer.Text}<br/>Correct answer: {pair.Value}<br/><br/>");
-                }
-                else if (txtAnswer != null)
-                {
-                    // Incorrect answer
-                    // Perform actions (e.g., display incorrect answer message)
-                    Response.Write($"Question: {pair.Key}<br/>Your answer: {txtAnswer.Text}<br/>Correct answer: {pair.Value}<br/><br/>");
-                }
+                //if (txtAnswer != null && txtAnswer.Text.Trim().Equals(pair.Value, StringComparison.OrdinalIgnoreCase))
+                //{
+                //    // Correct answer
+                //    // Perform actions (e.g., add points, display correct answer message)
+                //    Response.Write($"Question: {pair.Key}<br/>Your answer: {txtAnswer.Text}<br/>Correct answer: {pair.Value}<br/><br/>");
+                //}
+                //else if (txtAnswer != null)
+                //{
+                //    // Incorrect answer
+                //    // Perform actions (e.g., display incorrect answer message)
+                //    Response.Write($"Question: {pair.Key}<br/>Your answer: {txtAnswer.Text}<br/>Correct answer: {pair.Value}<br/><br/>");
+                //}
             }
         }
     }

@@ -13,26 +13,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <label>TTTTT</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                     <label>TTfdsghdfTTT</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                     <label>TTTddffdTT</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                     <label>gggg</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
                 </div>
             </div>
         </div>
