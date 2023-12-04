@@ -20,11 +20,10 @@
     </style>
 
 </head>
-<body style="align-content: center">
-    <form id="form1" runat="server" style="width: 100%; margin-top:10rem">
-
+<body>
+    <form id="form1" runat="server" style="width: 100%;" class="font-monospace m-5">
         <div class="container">
-            <div class="row form-group m-5">
+            <div class="row form-group m-3 card">
                 <div class="col-lg-12">
                     <asp:Label class="form-control" ID="Label6" runat="server" Text="您的姓名"></asp:Label>
                     <asp:TextBox class="form-control" ID="txt_name" runat="server"></asp:TextBox>
@@ -32,8 +31,8 @@
                 </div>
             </div>
 
-            <div class="row form-group m-5">
-                <div class="col-lg-12">
+            <div class="row form-group m-3 card">
+                <div>
                     <asp:Label class="form-control" ID="Label1" runat="server" Text="1. 新郎、新娘是什麼時期認識的？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans1" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                         <asp:ListItem>大學</asp:ListItem>
@@ -43,8 +42,8 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-5">
-                <div class="col-lg-12">
+            <div class="row form-group m-3 card">
+                <div>
                     <asp:Label class="form-control" ID="Label2" runat="server" Text="2. 新郎、新娘登記日期是幾月幾號？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans2" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                         <asp:ListItem>11/11</asp:ListItem>
@@ -54,8 +53,8 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-5">
-                <div class="col-lg-12">
+            <div class="row form-group m-3 card">
+                <div>
                     <asp:Label class="form-control" ID="Label3" runat="server" Text="3. 新郎、新娘交往了幾年？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans3" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                         <asp:ListItem>5</asp:ListItem>
@@ -65,8 +64,8 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-5">
-                <div class="col-lg-12">
+            <div class="row form-group m-3 card">
+                <div>
                     <asp:Label class="form-control" ID="Label4" runat="server" Text="4. 新郎、新娘第一次見面的縣市？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans4" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                         <asp:ListItem>高雄</asp:ListItem>
@@ -76,8 +75,8 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-5">
-                <div class="col-lg-12">
+            <div class="row form-group m-3 card">
+                <div>
                     <asp:Label class="form-control" ID="Label5" runat="server" Text="5. 新郎、新娘的蜜月國家？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans5" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                         <asp:ListItem>日本</asp:ListItem>
@@ -87,18 +86,13 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-5">
-                <div class="col-lg-12">
+            <div class="row form-group m-3">
+                <div>
                      <asp:Button class="form-control" ID="btn_submit" runat="server" Text="送出" OnClick="btnSubmit_Click" Width="100%" OnClientClick="" />
                 </div>
             </div>
         </div>
 
     </form>
-    <script>
-        function authcheck() {
-            var txt = "";
-        }
-    </script>
 </body>
 </html>
