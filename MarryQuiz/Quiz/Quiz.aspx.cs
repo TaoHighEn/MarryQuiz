@@ -1,9 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Configuration;
+using System.IO;
+using System.Data.SQLite;
+using System.Web.Optimization;
+using System.Text.RegularExpressions;
 
 namespace MarryQuiz.Quiz
 {
@@ -52,13 +59,7 @@ namespace MarryQuiz.Quiz
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            string user_name = txt_name.Text;
-            if (string.IsNullOrEmpty(user_name))
-            {
-                
-            }
             int score = 0;
-            
             for (int i = 0; i < 5; i++)
             {
                 RadioButtonList item = form1.FindControl("radio_ans" + (i + 1)) as RadioButtonList;
@@ -67,26 +68,68 @@ namespace MarryQuiz.Quiz
                     score += 20;
                 }
             }
-            //foreach (var pair in questionsAndAnswers)
-            //{
-                //string answerID = "txtAnswer_" + pair.Key.GetHashCode();
-                //TextBox txtAnswer = form1.FindControl(answerID) as TextBox;
-
-                //if (txtAnswer != null && txtAnswer.Text.Trim().Equals(pair.Value, StringComparison.OrdinalIgnoreCase))
-                //{
-                //    // Correct answer
-                //    // Perform actions (e.g., add points, display correct answer message)
-                //    Response.Write($"Question: {pair.Key}<br/>Your answer: {txtAnswer.Text}<br/>Correct answer: {pair.Value}<br/><br/>");
-                //}
-                //else if (txtAnswer != null)
-                //{
-                //    // Incorrect answer
-                //    // Perform actions (e.g., display incorrect answer message)
-                //    Response.Write($"Question: {pair.Key}<br/>Your answer: {txtAnswer.Text}<br/>Correct answer: {pair.Value}<br/><br/>");
-                //}
-            //}
+            //Add parameter
             Response.Write(score);
             var ipaddr = Request.ServerVariables["REMOTE_ADDR"].ToString();
+            string user_name = txt_name.Text;
+            //
+            string xpath = @"..\SQLLite\quiz_db.db";
+            string c_path = Server.MapPath(xpath);
+            if (!File.Exists(c_path))
+            {
+                using (var cn = new SQLiteConnection("data source=" + c_path))
+                {
+                    SQLiteConnection.CreateFile(c_path);
+                    cn.Open();
+                    SQLiteCommand cmd = cn.CreateCommand();
+                    cmd.CommandText = @"CREATE TABLE score (
+                                                     GUID   TEXT,
+                                                     Name   TEXT,
+                                                     Score  INTEGER,
+                                                     IPAddr TEXT,
+                                                     PRIMARY KEY (
+                                                         GUID
+                                                     )
+                                                 );";
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+                }
+            }
+            using (var conn = new SQLiteConnection("data source=" + c_path))
+            {
+                conn.Open();
+                Guid guid = Guid.NewGuid();
+                string sqlcmd = string.Format(@"Select * from score where IPAddr = '{0}'", ipaddr);
+                SQLiteCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sqlcmd;
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                if (dt.Rows.Count != 0)
+                {
+                    Response.Write("<script>alert('此IP已填過資料，請準備上台'); window.location='\\Quiz';</script>");
+                    //Response.Redirect(@".\Quiz");
+                    return;
+                }
+                else 
+                {
+                    Regex regex = new Regex("^[\u4e00-\u9fa5_a-zA-Z0-9]+$");
+                    if (!regex.IsMatch(user_name))
+                    {
+                        Response.Write("<script>alert('想壞壞？！'); window.location='\\Quiz';</script>");
+                        return;
+                    }
+                    sqlcmd = string.Format("INSERT INTO SCORE VALUES ('{0}','{1}',{2},'{3}')",guid,user_name,score,ipaddr);
+                    cmd.CommandText = sqlcmd;
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        Response.Write("<script>alert('答案輸入成功'); window.location='\\Quiz';</script>");
+                    }
+                    else 
+                    {
+                        Response.Write("<script>alert('答案輸入失敗，請重新輸入'); window.location='\\Quiz';</script>");
+                    }
+                }
+            }
         }
     }
 }
