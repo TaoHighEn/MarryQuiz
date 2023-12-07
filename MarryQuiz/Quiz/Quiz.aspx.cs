@@ -104,13 +104,17 @@ namespace MarryQuiz.Quiz
                 cmd.CommandText = sqlcmd;
                 DataTable dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());
+#if DEBUG
+                if (false)
+#else
                 if (dt.Rows.Count != 0)
+#endif 
                 {
                     Response.Write("<script>alert('此IP已填過資料，請準備上台'); window.location='\\Quiz';</script>");
                     //Response.Redirect(@".\Quiz");
                     return;
                 }
-                else 
+                else
                 {
                     Regex regex = new Regex("^[\u4e00-\u9fa5_a-zA-Z0-9]+$");
                     if (!regex.IsMatch(user_name))
@@ -118,13 +122,13 @@ namespace MarryQuiz.Quiz
                         Response.Write("<script>alert('想壞壞？！'); window.location='\\Quiz';</script>");
                         return;
                     }
-                    sqlcmd = string.Format("INSERT INTO SCORE VALUES ('{0}','{1}',{2},'{3}')",guid,user_name,score,ipaddr);
+                    sqlcmd = string.Format("INSERT INTO SCORE VALUES ('{0}','{1}',{2},'{3}')", guid, user_name, score, ipaddr);
                     cmd.CommandText = sqlcmd;
                     if (cmd.ExecuteNonQuery() == 1)
                     {
                         Response.Write("<script>alert('答案輸入成功'); window.location='\\Quiz';</script>");
                     }
-                    else 
+                    else
                     {
                         Response.Write("<script>alert('答案輸入失敗，請重新輸入'); window.location='\\Quiz';</script>");
                     }
