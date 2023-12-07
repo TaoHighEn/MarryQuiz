@@ -23,7 +23,7 @@
 </head>
 <body>
     <form id="form1" runat="server" style="width: 100%; margin-top: 10px">
-        <h1 class="mb-4">鮪魚恩和陳阿魚的婚禮問答</h1>
+        <h1 class="mb-4">討海恩和陳阿魚的婚禮問答</h1>
         <div class="container">
             <div class="row mt-3">
                 <div class="col">
