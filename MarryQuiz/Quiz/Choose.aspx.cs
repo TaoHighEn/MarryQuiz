@@ -53,6 +53,12 @@ namespace MarryQuiz.Quiz
                     result.Rows.Add(row);
                 }
             }
+            while (result.Rows.Count > 5) 
+            {
+                Random random = new Random();
+                int row = random.Next(result.Rows.Count);
+                result.Rows.RemoveAt(row);
+            };
             gv_NameList.DataSource = result;
             gv_NameList.DataBind();
             lbl_list.Visible = true;
