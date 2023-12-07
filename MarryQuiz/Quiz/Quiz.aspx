@@ -23,16 +23,16 @@
 </head>
 <body>
     <form id="form1" runat="server" style="width: 100%; margin-top: 10px">
-        <h1 class="mb-4">討海恩和陳阿魚的婚禮問答</h1>
-        <div class="container">
-            <div class="row mt-3">
+        <h1 class="mb-4" style="margin-left:30px">討海恩和陳阿魚的婚禮問答</h1>
+        <div class="container" style="background-image:url('../images/cat.png');background-size:contain">
+            <div class="row form-group m-3 card" style="opacity:0.9;">
                 <div class="col">
                     <asp:Label class="form-label" ID="Label6" runat="server" Text="您的姓名"></asp:Label>
                     <asp:TextBox class="form-control" ID="txt_name" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredField_Name" runat="server" ErrorMessage="姓名必填" ControlToValidate="txt_name" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
             </div>
-            <div class="row form-group m-3 card">
+            <div class="row form-group m-3 card" style="opacity:0.8;">
                 <div class="mb-3">
                     <asp:Label class="form-control" ID="Label1" runat="server" Text="1. 新郎、新娘是什麼時期認識的？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans1" runat="server" RepeatDirection="Vertical" CellPadding="10" CellSpacing="10">
@@ -43,7 +43,7 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-3 card">
+            <div class="row form-group m-3 card" style="opacity:0.8;">
                 <div class="mb-3">
                     <asp:Label class="form-control" ID="Label2" runat="server" Text="2. 新郎、新娘登記日期是幾月幾號？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans2" runat="server" RepeatDirection="Vertical" CellPadding="10" CellSpacing="10">
@@ -54,7 +54,7 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-3 card">
+            <div class="row form-group m-3 card" style="opacity:0.8;">
                 <div class="mb-3">
                     <asp:Label class="form-control" ID="Label3" runat="server" Text="3. 新郎、新娘交往了幾年？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans3" runat="server" RepeatDirection="Vertical" CellPadding="10" CellSpacing="10">
@@ -65,7 +65,7 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-3 card">
+            <div class="row form-group m-3 card" style="opacity:0.8;">
                 <div class="mb-3">
                     <asp:Label class="form-control" ID="Label4" runat="server" Text="4. 新郎、新娘第一次見面的縣市？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans4" runat="server" RepeatDirection="Vertical" CellPadding="10" CellSpacing="10">
@@ -76,7 +76,7 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div class="row form-group m-3 card">
+            <div class="row form-group m-3 card" style="opacity:0.8;">
                 <div class="mb-3">
                     <asp:Label class="form-control" ID="Label5" runat="server" Text="5. 新郎、新娘的蜜月國家？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans5" runat="server" RepeatDirection="Vertical" CellPadding="10" CellSpacing="10">
@@ -87,7 +87,7 @@
                     </asp:RadioButtonList>
                 </div>
             </div>
-            <div style="margin-bottom: 20px">
+            <div style="margin-bottom: 50px">
                 <div class="row mt-3">
                     <div class="col">
                         <asp:Button class="btn btn-primary" ID="btn_submit" runat="server" Text="送出" OnClick="btnSubmit_Click" Width="100%" />
