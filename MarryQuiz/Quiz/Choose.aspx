@@ -14,7 +14,7 @@
         </div>
         <br />
         <div style="width: 100%;display: flex; align-items: center; justify-content: center;">
-            <asp:Label runat="server" ID="lbl_list" Text="恭喜得分最低的五人名單，請上台獲獎。" Visible="false" BorderStyle="Double" Font-Size="XX-Large"/>
+            <asp:Label runat="server" ID="lbl_list" Text="恭喜獲獎五人名單，請上台獲獎。" Visible="false" BorderStyle="Double" Font-Size="XX-Large"/>
         </div>
          <br />
         <div style="width: 100%; display: flex; align-items: center; justify-content: center;">

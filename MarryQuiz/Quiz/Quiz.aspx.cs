@@ -16,7 +16,7 @@ namespace MarryQuiz.Quiz
 {
     public partial class Quiz : System.Web.UI.Page
     {
-        private string[] ans = { "大學", "10/28", "8", "雲林", "日本" };
+        private string[] ans = { "大學", "10/28", "8", "陳阿農", "日本" };
         //private string[,] questionsAndAnswers =
         //{
         //    { "1. 新郎、新娘是什麼時期認識的？", "大學" },

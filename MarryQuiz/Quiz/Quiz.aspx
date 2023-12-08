@@ -67,12 +67,12 @@
             </div>
             <div class="row form-group m-3 card" style="opacity:0.8;">
                 <div class="mb-3">
-                    <asp:Label class="form-control" ID="Label4" runat="server" Text="4. 新郎、新娘第一次見面的縣市？"></asp:Label>
+                    <asp:Label class="form-control" ID="Label4" runat="server" Text="4. 背景圖片的貓伴郎名字？"></asp:Label>
                     <asp:RadioButtonList class="form-control" ID="radio_ans4" runat="server" RepeatDirection="Vertical" CellPadding="10" CellSpacing="10">
-                        <asp:ListItem>高雄</asp:ListItem>
-                        <asp:ListItem>雲林</asp:ListItem>
-                        <asp:ListItem>桃園</asp:ListItem>
-                        <asp:ListItem>台北</asp:ListItem>
+                        <asp:ListItem>美光王</asp:ListItem>
+                        <asp:ListItem>美猴王</asp:ListItem>
+                        <asp:ListItem>陳阿肥</asp:ListItem>
+                        <asp:ListItem>陳阿農</asp:ListItem>
                     </asp:RadioButtonList>
                 </div>
             </div>
